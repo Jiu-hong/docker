@@ -10,4 +10,6 @@ COPY . .
 
 RUN npm run build
 
+RUN npm i next
+
 CMD ["npm", "run", "start"]

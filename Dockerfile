@@ -1,20 +1,13 @@
-FROM node:12-alpine as build
+FROM node:12.19.0
 
-COPY . /src
-WORKDIR /src
+WORKDIR /usr/src/app
 
-RUN npm ci
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
 RUN npm run build
-RUN npm prune --production
 
-FROM node:12-alpine
-
-WORKDIR /usr/app
-
-COPY --from=build /src/node_modules /usr/app/node_modules
-COPY --from=build /src/package.json /usr/app/package.json
-COPY --from=build /src/.next /usr/app/.next
-
-ENV NODE_ENV production
-
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

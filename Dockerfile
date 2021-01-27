@@ -4,9 +4,9 @@ COPY . /src
 WORKDIR /src
 
 
-RUN npm install
-
+RUN npm ci
 RUN npm run build
+RUN npm prune --production
 
 FROM node:12.19.0 
 

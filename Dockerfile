@@ -1,13 +1,18 @@
-FROM node:12.19.0
+FROM node:12.19.0 as build
 
-WORKDIR /usr/src/app
+COPY . /src
+WORKDIR /src
 
-COPY package.json /usr/src/app/
 
 RUN npm install
 
-COPY . /usr/src/app
-
 RUN npm run build
+
+FROM node:12.19.0 
+
+WORKDIR /usr/src/app
+
+
+COPY /src/* /usr/src/app/*
 
 CMD ["npm", "start"]

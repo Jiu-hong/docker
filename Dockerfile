@@ -1,4 +1,4 @@
-FROM node:12.19.0 as build
+FROM node:12-alpine as build
 
 COPY . /src
 WORKDIR /src
@@ -8,7 +8,7 @@ RUN npm ci
 RUN npm run build
 RUN npm prune --production
 
-FROM node:12.19.0 
+FROM node:12-alpine
 
 WORKDIR /usr/src/app
 

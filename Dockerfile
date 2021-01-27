@@ -10,6 +10,4 @@ COPY . .
 
 RUN npm run build
 
-RUN cd /usr/src/app
-
 CMD ["npm", "run", "start"]

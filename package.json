@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start"
+        "start": "/usr/src/app/next start"
     },
     "dependencies": {
         "bootstrap": "^4.6.0",
